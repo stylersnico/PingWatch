@@ -71,83 +71,10 @@ Each folder contains the 3 files of a run:
 * [PingWatch_20261008_093417_summary.txt](ex/internet/PingWatch_20261008_093417_summary.txt)
 * [PingWatch_20261008_093417_report.html](ex/internet/PingWatch_20261008_093417_report.html)
 
-### Internet
-
-```powershell
-.\PingWatch.ps1 -Target1 1.1.1.1 -Target2 1.1.1.1 -DurationMinutes 1
-```
-
-<code>ex\internet\PingWatch_20261008_093417_summary.txt</code> :
-
-```
-==================== PingWatch summary ====================
-Start      : 2026-10-08 09:34:17
-End        : 2026-10-08 09:35:18
-Duration   : 00:01:00 (planned 1 min)
-Interval   : 1000 ms   Timeout: 1000 ms   Outage = 3+ consecutive losses
-Rounds where BOTH targets failed: 0  (suggests a local/network-side problem)
-
---- 1.1.1.1 ---
-Sent / Received / Lost : 60 / 60 / 0  (0.00 % loss)
-Latency min/avg/max    : 16 / 30.4 / 121 ms
-Latency p95            : 91 ms
-Jitter (avg delta)     : 19.6 ms
-Longest loss streak    : 0 pings (~0 s)
-Outages                : 0
-
---- 1.1.1.1 ---
-Sent / Received / Lost : 60 / 60 / 0  (0.00 % loss)
-Latency min/avg/max    : 16 / 43.2 / 121 ms
-Latency p95            : 89 ms
-Jitter (avg delta)     : 20.2 ms
-Longest loss streak    : 0 pings (~0 s)
-Outages                : 0
-
-Detailed log: PingWatch_20261008_093417.csv
-```
-
-<code>ex\internet\PingWatch_20261008_093417.csv</code> :
-
-```csv
-Timestamp,Target,Status,RTT_ms
-2026-10-08 09:34:17.885,1.1.1.1,Success,16
-2026-10-08 09:34:17.885,1.1.1.1,Success,32
-2026-10-08 09:34:18.898,1.1.1.1,Success,121
-2026-10-08 09:34:18.898,1.1.1.1,Success,121
-2026-10-08 09:34:19.912,1.1.1.1,Success,89
-2026-10-08 09:34:19.912,1.1.1.1,Success,23
-...
-```
-
-### Outage
-
-```powershell
-.\PingWatch.ps1 -Target1 127.0.0.1 -Target2 192.0.2.1 -DurationMinutes 1 -TimeoutMs 300
-```
-
-<code>ex\outage\PingWatch_20261008_093417_summary.txt</code> :
-
-```
---- 127.0.0.1 ---
-Sent / Received / Lost : 60 / 60 / 0  (0.00 % loss)
-Latency min/avg/max    : 0 / 0.0 / 0 ms
-Latency p95            : 0 ms
-Jitter (avg delta)     : 0.0 ms
-Longest loss streak    : 0 pings (~0 s)
-Outages                : 0
-
---- 192.0.2.1 ---
-Sent / Received / Lost : 60 / 0 / 60  (100.00 % loss)
-Latency                : no replies received
-Longest loss streak    : 60 pings (~60 s)
-Outages                : 1
-   09:34:17 -> still down   60 lost
-```
 
 ### HTML report
 
 Download <code>PingWatch_*_report.html</code> and open it in any browser, works offline (GitHub only shows the source code of HTML files). Use the button **Load another PingWatch CSV...** to display any other run, even one made with an older version of the script.
-
 
 --------
 
